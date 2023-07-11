@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 
 class ProjectController extends Controller
 {
@@ -38,7 +39,9 @@ class ProjectController extends Controller
 
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     public function store(Request $request)
