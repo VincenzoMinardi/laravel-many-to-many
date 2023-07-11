@@ -12,6 +12,7 @@
                 <th scope="col">Lastname</th>
                 <th scope="col">Firstname</th>
                 <th scope="col">Collabs</th>
+                <th scope="col">Technology</th>
 
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{$project->name}}</td>
                 <td>{{$project->surname}}</td>
                 <td>{{$project->type->collabs}}</td>
+                <td>{{ implode(', ', $project->technologies->pluck('technology')->all()) }}</td>
                 <td>
                     <div class="d-flex justify-content-start">
                        <a class="btn btn-warning me-2" href="{{ route('admin.projects.edit', ['project' => $project->id]) }}">Edit</a>

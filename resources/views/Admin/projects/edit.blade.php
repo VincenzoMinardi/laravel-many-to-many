@@ -32,7 +32,7 @@
             id="type"
             name="type"
             value="{{ old('type')}}">
-                <option selected>Open this select menu</option>
+                <option selected>Open this select Type</option>
             @foreach ($types as $type)
                 <option value="{{$type->id}}">{{$type->type}}</option>
             @endforeach
@@ -44,6 +44,28 @@
                 </div>
             @enderror
         </div>
+
+        <div class="mb-3">
+            <label for="technology" class="form-label">technology</label>
+            
+            <select class="form-select @error('technology') is-invalid @enderror" 
+            aria-label="Default select example"
+            id="technology"
+            name="technology"
+            value="{{ old('technology')}}">
+                <option selected>Open this select technology</option>
+            @foreach ($technologies as $technology)
+                <option value="{{$technology->id}}">{{$technology->technology}}</option>
+            @endforeach
+            </select>
+         
+            @error('type')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
 
         <div class="mb-3">
             <label for="url_image" class="form-label">date</label>
@@ -60,6 +82,8 @@
                 </div>
             @enderror
         </div>
+
+        
 
         <div class="mb-3">
             <label for="title" class="form-label">name</label>
@@ -112,11 +136,11 @@
         <div class="mb-3">
             <label for="content" class="form-label">Description</label>
             <textarea
-                class="form-control @error('Description') is-invalid @enderror"
-                id="Description"
+                class="form-control @error('description') is-invalid @enderror"
+                id="description"
                 rows="10"
-                name="Description">{{ old('Description',$project->description) }}</textarea>
-            @error('Description')
+                name="description">{{ old('description',$project->description) }}</textarea>
+            @error('description')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
