@@ -17,25 +17,25 @@ class TechnologiesTableSeeder extends Seeder
     {
         $technologies = [
             [
-                'name'  => 'php',
+                'techonology'  => 'php',
             ],
             [
-                'name'  => 'js',
+                'techonology'  => 'js',
             ],
             [
-                'name'  => 'html',
+                'techonology'  => 'html',
             ],
             [
-                'name'  => 'css',
+                'techonology'  => 'css',
             ],
             [
-                'name'  => 'laravel',
+                'techonology'  => 'laravel',
             ],
             [
-                'name'  => 'bootstrap',
+                'techonology'  => 'bootstrap',
             ],
             [
-                'name'  => 'Vue.js',
+                'techonology'  => 'Vue.js',
             ],
         ];
 
