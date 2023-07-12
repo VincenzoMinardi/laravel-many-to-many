@@ -13,7 +13,7 @@ class TechnologyController extends Controller
     {
         $technology = Technology::paginate(5);
 
-        return view('admin.technologies.index', compact('technologies'));
+        return view('admin.technologies.index', compact('technology'));
     }
 
 
