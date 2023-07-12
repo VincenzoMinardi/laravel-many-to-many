@@ -10,39 +10,55 @@ class TypeController extends Controller
 {
     public function index()
     {
-        $types = Type::all();
+        $types = Type::paginate(5);
         return view('admin.types.index', compact('types'));
     }
 
 
     public function create()
     {
-        //
+        return view('admin.types.create', compact('types'));
     }
 
 
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newType = new Type();
+
+        $newType->type     = $data['type'];
+        $newType->collabs     = $data['collabs'];
+        $newType->save();
+
+        return to_route('admin.types.show', ['types' => $newType]);
     }
 
 
     public function show(Type $type)
     {
-        return view('admin.type.show', compact('type'));
+        return view('admin.types.show', compact('type'));
     }
 
 
     public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('types'));
     }
 
 
 
     public function update(Request $request, Type $type)
     {
-        //
+        $data = $request->all();
+
+        $newType = new Type();
+
+        $newType->types     = $data['type'];
+        $newType->collabs     = $data['collabs'];
+        $newType->update();
+
+        return to_route('admin.types.show', ['type' => $type]);
     }
 
 
@@ -55,6 +71,6 @@ class TypeController extends Controller
 
         $type->delete();
 
-        return to_route('admin.type.index')->with('delete_success', $type);
+        return to_route('admin.types.index')->with('delete_success', $type);
     }
 }
