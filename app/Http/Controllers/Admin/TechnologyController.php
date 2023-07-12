@@ -33,7 +33,7 @@ class TechnologyController extends Controller
         $newTechnology->save();
 
 
-        return to_route('admin.technologies.show', ['technologies' => $newTechnology]);
+        return to_route('admin.technologies.show', ['technology' => $newTechnology]);
     }
 
 
@@ -58,16 +58,24 @@ class TechnologyController extends Controller
 
         $technology->update();
 
-        return to_route('admin.technologies.show', ['type' => $technology]);
+        return to_route('admin.technologies.show', ['technology' => $technology]);
     }
+
 
 
     public function destroy(Technology $technology)
     {
-        foreach ($technology->project as $project) {
-            $project->technology_id = 1;
-            $project->update();
+        if ($technology->project) {
+            foreach ($technology->project as $project) {
+                $project->technology_id = 1;
+                $project->update();
+            }
         }
+
+
+
+
+
 
         $technology->delete();
 
