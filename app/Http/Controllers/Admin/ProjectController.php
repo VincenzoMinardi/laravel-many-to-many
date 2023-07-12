@@ -81,7 +81,9 @@ class ProjectController extends Controller
         $project->description   = $data['description'];
         $project->update();
 
-        return to_route('admin.projects.show', ['project' => $project]);
+        $project->technologies()->sync($data['technologies'] ?? []);
+
+        return  redirect()->route('admin.projects.index', ['project' => $project]);
     }
 
     public function destroy(Project $project)
