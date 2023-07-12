@@ -74,7 +74,7 @@
         </div>
     </div>
 </div>
-<a class="btn btn-warning" href="{{ route('admin.projects.create', ['project' => $project->id]) }}">New</a>
+<a class="btn btn-warning" href="{{ route('admin.projects.create', ['project' => $project->id]) }}">New Project</a>
 {{ $projects->links() }}
 </div>
 @endsection

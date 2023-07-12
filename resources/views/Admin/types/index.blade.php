@@ -60,7 +60,7 @@
         </div>
     </div>
 </div>
-<a class="btn btn-warning" href="{{ route('admin.types.create', ['type' => $type->id]) }}">New</a>
+<a class="btn btn-warning" href="{{ route('admin.types.create', ['type' => $type->id]) }}">New Type</a>
 {{ $types->links() }}
 </div>
 @endsection
