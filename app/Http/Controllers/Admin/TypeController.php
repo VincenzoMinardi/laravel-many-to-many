@@ -52,7 +52,7 @@ class TypeController extends Controller
     {
         $data = $request->all();
 
-        $type->types = $data['type'];
+        $type->type = $data['type'];
         $type->collabs = $data['collabs'];
         $type->update();
 
