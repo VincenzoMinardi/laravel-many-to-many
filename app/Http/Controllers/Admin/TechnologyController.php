@@ -9,6 +9,19 @@ use App\Models\Technology;
 
 class TechnologyController extends Controller
 {
+
+    private $validations = [
+        'technology'     => 'required|string|min:2|max:10',
+
+    ];
+
+    private $validation_messages = [
+        'required'  => 'Il campo :attribute è obbligatorio',
+        'min'       => 'Il campo :attribute deve avere almeno :min caratteri',
+        'max'       => 'Il campo :attribute non può superare i :max caratteri',
+
+    ];
+
     public function index()
     {
         $technologies = Technology::paginate(10);
@@ -24,7 +37,11 @@ class TechnologyController extends Controller
 
 
     public function store(Request $request)
+
     {
+
+        $request->validate($this->validations, $this->validation_messages);
+
         $data = $request->all();
 
         $newTechnology = new Technology();

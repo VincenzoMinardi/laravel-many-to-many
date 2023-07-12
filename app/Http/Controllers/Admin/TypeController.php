@@ -8,6 +8,20 @@ use App\Models\Type;
 
 class TypeController extends Controller
 {
+
+    private $validations = [
+        'type'     => 'required|string|min:5|max:100',
+        'collabs'     => 'required|string|min:5|max:100',
+
+    ];
+
+    private $validation_messages = [
+        'required'  => 'Il campo :attribute è obbligatorio',
+        'min'       => 'Il campo :attribute deve avere almeno :min caratteri',
+        'max'       => 'Il campo :attribute non può superare i :max caratteri',
+
+    ];
+
     public function index()
     {
         $types = Type::paginate(5);
@@ -23,7 +37,11 @@ class TypeController extends Controller
 
     public function store(Request $request)
     {
+
+        $request->validate($this->validations, $this->validation_messages);
+
         $data = $request->all();
+
 
         $newType = new Type();
 
@@ -43,6 +61,7 @@ class TypeController extends Controller
 
     public function edit(Type $type)
     {
+
         return view('admin.types.edit', compact('type'));
     }
 
