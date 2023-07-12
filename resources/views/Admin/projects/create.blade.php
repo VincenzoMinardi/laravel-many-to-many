@@ -28,38 +28,36 @@
         
         <div class="mb-3">
             <label for="type" class="form-label">Type</label>
-            
             <select class="form-select @error('type') is-invalid @enderror" 
-            aria-label="Default select example"
-            id="type"
-            name="type"
-            value="{{ old('type')}}">
+                    aria-label="Default select example"
+                    id="type"
+                    name="type_id"> 
                 <option selected>Open this select Type</option>
-            @foreach ($types as $type)
-                <option value="{{$type->id}}">{{$type->type}}</option>
-            @endforeach
+                @foreach($types as $type)
+                        <option value="{{ $type->id }}">{{ $type->type }}</option>
+                    @endforeach
             </select>
-         
             @error('type')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
             @enderror
         </div>
+        
 
         <div class="mb-3">
             <label for="technology" class="form-label">technology</label>
             
-            <select class="form-select @error('technology') is-invalid @enderror" 
-            aria-label="Default select example"
-            id="technology"
-            name="technology"
-            value="{{ old('technology')}}">
-                <option selected>Open this select technology</option>
-            @foreach ($technologies as $technology)
-                <option value="{{$technology->id}}">{{$technology->technology}}</option>
-            @endforeach
-            </select>
+            @foreach($technologies as $technology)
+            <div class="mb-3 form-check">
+                <input type="checkbox" 
+                    class="form-check-input" id="technology{{ $technology->id }}" 
+                    name="technologies[]" value="{{ $technology->id }}"
+                    @if(in_array($technology->id, old('technologies', []))) checked @endif
+                    >
+                <label class="form-check-label" for="technology{{ $technology->id }}">{{ $technology->technology }}</label>
+            </div>
+        @endforeach
         
         
 

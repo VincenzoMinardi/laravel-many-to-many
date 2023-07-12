@@ -6,14 +6,22 @@ import.meta.glob(["../img/**"]);
 
 import * as bootstrap from "bootstrap";
 
-const confirmDelete = document.querySelector("#confirm-delete");
-if (confirmDelete) {
-    document.querySelectorAll(".js-delete").forEach((button) => {
+const myModal = document.querySelectorAll(".myModal");
+
+if (myModal.length != 0) {
+    const myForm = document.getElementById("myForm");
+    const oldAction = myForm.action;
+
+    // Event
+    myModal.forEach((button) => {
         button.addEventListener("click", function () {
-            confirmDelete.action = confirmDelete.dataset.template.replace(
-                "*****",
-                this.dataset.id
-            );
+            myForm.action = oldAction;
+
+            const id = button.getAttribute("data-id");
+
+            const newAction = myForm.action.replace("***", id);
+
+            myForm.action = newAction;
         });
     });
 }
