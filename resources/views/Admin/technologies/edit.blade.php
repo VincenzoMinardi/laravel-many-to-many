@@ -7,27 +7,22 @@
     <form method="POST" action="{{ route('admin.technologies.update', ['technology' => $technology]) }}" novalidate>
         @csrf
         @method('PUT')
-\       
-        <div class="mb-3">
-            <label for="technology" class="form-label">technology</label>
-            
-            <select class="form-select @error('technology') is-invalid @enderror" 
-            aria-label="Default select example"
-            id="technology"
-            name="technology"
-            value="{{ old('technology')}}">
-                <option selected>Open this select technology</option>
-            @foreach ($technologies as $technology)
-                <option value="{{$technology->id}}">{{$technology->technology}}</option>
-            @endforeach
-            </select>
-         
-            @error('technology')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
-        </div>
+      
+<div class="mb-3">
+    <label for="technology" class="form-label">Technology</label>
+    <input
+        type="text"
+        class="form-control @error('technology') is-invalid @enderror"
+        id="technology"
+        name="technology"
+        value="{{ old('type',$technology->technology) }}"
+    >
+     @error('technology')
+    <div class="invalid-feedback">
+        {{ $message }}
+    </div>
+    @enderror
+</div>
         <button class="btn btn-primary">Save</button>
     </form>
     </div>
