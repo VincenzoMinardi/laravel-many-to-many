@@ -32,7 +32,7 @@
     </table>
     <a class="btn btn-warning" href="{{ route('admin.technologies.create', ['technology' => $technology->id]) }}">New technology</a>
     
-    <!-- The rest of your code -->
+   
     
 </div>
 @endsection
