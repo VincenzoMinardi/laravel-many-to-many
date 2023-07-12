@@ -17,7 +17,7 @@ class TypeController extends Controller
 
     public function create()
     {
-        return view('admin.types.create', compact('types'));
+        return view('admin.types.create');
     }
 
 
@@ -31,7 +31,7 @@ class TypeController extends Controller
         $newType->collabs     = $data['collabs'];
         $newType->save();
 
-        return to_route('admin.types.show', ['types' => $newType]);
+        return route('admin.types.show', ['type' => $newType]);
     }
 
 
@@ -43,7 +43,7 @@ class TypeController extends Controller
 
     public function edit(Type $type)
     {
-        return view('admin.types.edit', compact('types'));
+        return view('admin.types.edit', compact('type'));
     }
 
 
@@ -52,11 +52,9 @@ class TypeController extends Controller
     {
         $data = $request->all();
 
-        $newType = new Type();
-
-        $newType->types     = $data['type'];
-        $newType->collabs     = $data['collabs'];
-        $newType->update();
+        $type->types = $data['type'];
+        $type->collabs = $data['collabs'];
+        $type->update();
 
         return to_route('admin.types.show', ['type' => $type]);
     }

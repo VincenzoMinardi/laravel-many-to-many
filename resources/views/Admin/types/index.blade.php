@@ -47,7 +47,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                 <form
                     action=""
-                    data-template="{{ route('admin.types.destroy', ['types' => '*****']) }}"
+                    data-template="{{ route('admin.types.destroy', ['type' => '*****']) }}"
                     method="post"
                     class="d-inline-block"
                     id="confirm-delete"

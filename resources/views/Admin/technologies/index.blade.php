@@ -5,7 +5,7 @@
     @if (session('delete_success'))
         @php $technology = session('delete_success') @endphp
         <div class="alert alert-danger">
-            The project "{{ $technology->technology }}" has been deleted forever
+            The technology "{{ $technology->technology }}" has been deleted forever
         </div>
     @endif
 <table class="table table-striped">
@@ -15,9 +15,9 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($technologies as $technology)
+        {{-- @foreach ($technologies as $technology) --}}
             <tr>
-                <td>{{ implode(', ', $project->technologies->pluck('technology')->all()) }}</td>
+                {{-- <td>{{ implode(', ', $project->technologies->pluck('technology')->all()) }}</td> --}}
                 
                 <td>
                     <div class="d-flex justify-content-start">
@@ -28,7 +28,7 @@
                 </td>
             </tr>
             
-        @endforeach
+        {{-- @endforeach --}}
     </tbody>
 </table>
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -58,8 +58,8 @@
         </div>
     </div>
 </div>
-<a class="btn btn-warning" href="{{ route('admin.technologies.create', ['technology' => $technology->id]) }}">New Technology</a>
-{{ $projects->links() }}
+{{-- <a class="btn btn-warning" href="{{ route('admin.technologies.create', ['technology' => $technology->id]) }}">New Technology</a> --}}
+{{-- {{ $technologies->links() }} --}}
 </div>
 @endsection
 
