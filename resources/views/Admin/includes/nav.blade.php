@@ -20,6 +20,16 @@
                         Projects
                     </a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="{{ route('admin.types.index') }}" role="button" aria-expanded="false">
+                        Type
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="{{ route('admin.technologies.index') }}" role="button" aria-expanded="false">
+                        Technologies
+                    </a>
+                </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
