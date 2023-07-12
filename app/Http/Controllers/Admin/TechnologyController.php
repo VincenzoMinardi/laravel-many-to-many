@@ -69,13 +69,16 @@ class TechnologyController extends Controller
 
     public function update(Request $request, Technology $technology)
     {
+
+
+
         $data = $request->all();
 
         $technology->technology = $data['technology'];
 
         $technology->update();
 
-        return to_route('admin.technologies.show', ['technology' => $technology]);
+        return  redirect()->route('admin.technologies.index', ['technology' => $technology]);
     }
 
 

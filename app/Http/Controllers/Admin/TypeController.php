@@ -69,13 +69,17 @@ class TypeController extends Controller
 
     public function update(Request $request, Type $type)
     {
+
+        $request->validate($this->validations);
+
+
         $data = $request->all();
 
         $type->type = $data['type'];
         $type->collabs = $data['collabs'];
         $type->update();
 
-        return to_route('admin.types.show', ['type' => $type]);
+        return redirect()->route('admin.types.index', ['type' => $type]);
     }
 
 
