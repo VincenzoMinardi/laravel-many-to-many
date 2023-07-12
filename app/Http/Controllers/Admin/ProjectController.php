@@ -52,6 +52,7 @@ class ProjectController extends Controller
 
         $newProject = new Project();
 
+        $newProject->type_id       = $data['type_id'];
         $newProject->title          = $data['title'];
         $newProject->date           = $data['date'];
         $newProject->name           = $data['name'];
@@ -85,11 +86,12 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
+        // Rimuovi le dipendenze nella tabella project_technology
+        $project->technologies()->detach();
 
-
+        // Elimina il progetto
         $project->delete();
 
-
-        return to_route('admin.projects.index')->with('delete_success', $project,);
+        return redirect()->route('admin.projects.index')->with('delete_success', $project);
     }
 }
