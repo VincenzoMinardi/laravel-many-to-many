@@ -16,7 +16,7 @@ class TypesTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $type = new Type();
 
             $type->type = $faker->word();
