@@ -6,7 +6,7 @@
 
     
 
-    <form method="POST" action="{{ route('admin.projects.store') }}" novalidate>
+    <form method="POST" action="{{ route('admin.projects.store') }}" enctype="multipart/form-data" novalidate>
         @csrf
 
         <div class="mb-3">
@@ -19,6 +19,16 @@
                 value="{{ old('title') }}"
             >
             @error('title')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+            <label class="input-group-text  @error('image') is-invalid @enderror" for="image">Upload</label>
+            @error('image')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
