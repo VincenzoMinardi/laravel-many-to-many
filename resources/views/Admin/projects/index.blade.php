@@ -11,6 +11,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <th scope="col">Id</th>
             <th scope="col">Title</th>
             <th scope="col">Type</th>
             <th scope="col">Description</th>
@@ -24,7 +25,8 @@
     <tbody>
         @foreach ($projects as $project)
             <tr>
-                <th scope="row">{{$project->title}}</th>
+                <th scope="row">{{$project->id}}</th>
+                <th>{{$project->title}}</th>
                 <td>{{$project->type->type}}</td>
                 <td>{{$project->description}}</td>
                 <td>{{$project->date}}</td>

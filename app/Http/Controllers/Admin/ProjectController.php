@@ -88,15 +88,18 @@ class ProjectController extends Controller
 
             // Per salvare la nuova immagine
             $imagePath = Storage::put('uploads', $data['image']);
-
+            // dd($imagePath);
             // per eliminare la vecchia immagine
-            Storage::delete($project->image);
+            if (isset($data['image'])) {
+
+                Storage::delete($project->image);
+            }
 
             // aggiornare l'immagine nuova solo se presente 
             $project->image         = $imagePath;
         }
 
-        Storage::delete($project->image);
+
 
         $project->title         = $data['title'];
         $project->image         = $imagePath;
@@ -108,7 +111,7 @@ class ProjectController extends Controller
 
         $project->technologies()->sync($data['technologies'] ?? []);
 
-        return  redirect()->route('admin.projects.index', ['project' => $project]);
+        return  redirect()->route('admin.projects.show', ['project' => $project]);
     }
 
     public function destroy(Project $project)
