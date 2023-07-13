@@ -84,13 +84,14 @@ class ProjectController extends Controller
 
         // Validazione se l'utente cambia l'immagine
 
-        if ($data['image']) {
+        if ($request->has('image')) {
 
             // Per salvare la nuova immagine
             $imagePath = Storage::put('uploads', $data['image']);
-            // dd($imagePath);
+
+
             // per eliminare la vecchia immagine
-            if (isset($data['image'])) {
+            if ($project->image) {
 
                 Storage::delete($project->image);
             }
@@ -102,7 +103,7 @@ class ProjectController extends Controller
 
 
         $project->title         = $data['title'];
-        $project->image         = $imagePath;
+        // $project->image         = $imagePath;
         $project->date          = $data['date'];
         $project->name          = $data['name'];
         $project->surname       = $data['surname'];
