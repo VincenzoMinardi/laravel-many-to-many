@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Project;
 use App\Models\Type;
+use App\Models\Project;
 use App\Models\Technology;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -50,10 +51,13 @@ class ProjectController extends Controller
 
         $data = $request->all();
 
+        $imagePath = Storage::put('uploads', $data['image']);
+
         $newProject = new Project();
 
-        $newProject->type_id       = $data['type_id'];
+        $newProject->type_id        = $data['type_id'];
         $newProject->title          = $data['title'];
+        $newProject->image          = $imagePath;
         $newProject->date           = $data['date'];
         $newProject->name           = $data['name'];
         $newProject->surname        = $data['surname'];
