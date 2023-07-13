@@ -19,7 +19,7 @@ class ProjectsTableSeeder extends Seeder
     {
         $technologies = Technology::all()->pluck('id');
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $project = new Project();
             $project->type_id = rand(1, 50);
             $project->title = $faker->word();
