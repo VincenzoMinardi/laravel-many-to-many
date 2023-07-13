@@ -49,7 +49,7 @@ class TypeController extends Controller
         $newType->collabs     = $data['collabs'];
         $newType->save();
 
-        return route('admin.types.show', ['type' => $newType]);
+        return to_route('admin.types.show', ['type' => $newType]);
     }
 
 
